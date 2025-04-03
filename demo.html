@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RTMP player</title>
+  </head>
+  <body>
+    <script src="./dist/webrtmp.js"></script>
+    <video id="videoElement"></video>
+    <script>
+     const link = 'rtmp-lb.ost.rutube.ru/live_push/daca3593464c8ba4fff9a0a7ca86ccbc?sinfo=DZW68ace7GwmBhyYAmdQUVvM4nY7AjkK'
+     const videoElement = document.getElementById('videoElement');    
+     const rtmp_player = webrtmpjs.createWebRTMP();
+     
+     rtmp_player.attachMediaElement(videoElement);
+     
+     rtmp_player.open(link, 80).then(() => {  
+       rtmp_player.connect("demo").then(() => {                  
+         rtmp_player.play("your streanname").then(() => { 
+           console.log("playing");
+         })
+       })
+     })
+    </script>
+  </body>
+</html>
